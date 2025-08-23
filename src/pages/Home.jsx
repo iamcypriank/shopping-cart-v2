@@ -1,6 +1,24 @@
-export default function Home(){
+import Button from "../components/Button";
+import ProductCard from "../components/ProductCard";
+import { useFetchProducts } from "../hooks/useFetchProducts";
 
+export default function Home(){
+    const { list , error , loading } = useFetchProducts('products?offset=12&limit=5');
     return <>
-    <p>this is home page!</p>
+    { loading && <p>loading</p>}
+    { error && <p>{error}</p>  }
+    { list && <section className="p-4 flex flex-col gap-4">
+        <article className="h-[200px] flex justify-center items-center bg-accent-primary">
+            <Button>Shop Now</Button>
+        </article>
+        <section className="flex flex-col gap-4">
+            <h1 className="text-center text-2xl p-4">New Arrival</h1>
+            <div className="flex gap-8 flex-wrap justify-center items-center ">
+                { list.map((product)=>{
+                    return <ProductCard key={product.id} product={product} />
+                }) }
+            </div>
+        </section>
+    </section>}
     </>
 }
