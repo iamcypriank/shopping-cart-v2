@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Navbar(){
 
-    return <main>
+    return <main className="h-full">
         <header className="flex justify-between px-8 py-4 border-b-2 border-gray-200 dark:border-gray-800  bg-bg-secondary-light dark:bg-bg-secondary-dark">
             <Link to="/"><div className="items-center flex gap-1">
                 <ShoppingCart className="text-accent-primary" />
@@ -13,7 +13,7 @@ export default function Navbar(){
                 </h1>
             </div></Link>
             <nav className="flex gap-4">
-                <ShoppingBag className="text-black dark:text-white" />
+                <Link to='/cart'><ShoppingBag className="text-black dark:text-white" /></Link>
                 <UserCircle  className="text-black dark:text-white" />
             </nav>
         </header>

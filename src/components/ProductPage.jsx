@@ -14,7 +14,7 @@ export default function ProductPage(){
     { error && <p>{error}</p> }
     { list && <div className="p-4 flex flex-col gap-16">
         <section className="flex gap-4 max-[723px]:flex-col max-[723px]:items-center ">
-        <div className="min-w-[250px] max-w-[250px] flex flex-col gap-2 ">
+        <div className="min-w-[250px] max-w-[250px] flex flex-col gap-4 ">
             <img src={list.images} />
             <div className="w-full">
                 <Quantity id={list.id} product={list} />

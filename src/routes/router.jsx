@@ -3,6 +3,7 @@ import Home from "../pages/Home"
 import Error from "../pages/Error"
 import Navbar from "../components/Navbar"
 import ProductPage from "../components/ProductPage"
+import Cart from "../pages/Cart"
 
 export const router = createBrowserRouter([
     {
@@ -17,6 +18,11 @@ export const router = createBrowserRouter([
             {
                 path : '/product/:id',
                 element : <ProductPage />
+            },
+            {
+                path : '/cart',
+                element : <Cart />
+                
             }
         ]
     }
