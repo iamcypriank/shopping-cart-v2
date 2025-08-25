@@ -17,7 +17,7 @@ export default function Cart(){
         { cart.length==0 && <p className="mt-30 text-center">Cart is Empty</p> }
         { cart.length>0 && <div className="p-4 md:grid md:grid-cols-[1fr_auto_auto] gap-8">
             <section className="flex flex-col gap-4">{cart.map((item)=>{
-            return <><ProductInCart key={item.id} item={item} /><hr className="border-gray-200" /></>
+            return <div key={item.product.id} className="flex flex-col gap-4"><ProductInCart  item={item} /><hr className="border-gray-200" /></div>
         })}
         </section>
         <div className="max-md:hidden w-[1px] h-full bg-gray-200" ></div>

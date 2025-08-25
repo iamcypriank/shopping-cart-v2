@@ -38,10 +38,10 @@ export default function Shop(){
         setSortType(e.target.value)
     }
     
+    if(loading) return <div className="mt-40"><Loading /></div>;
     
     return <>
-    { loading && <div className="mt-40"><Loading /></div>}
-    { error && <p>{error}</p> }
+    { error && <p className="mt-30 text-center">{error}</p> }
     { list && list.length==0 && <p>no products found</p>}
     { list && 
         <section className="p-4 flex flex-col gap-4">

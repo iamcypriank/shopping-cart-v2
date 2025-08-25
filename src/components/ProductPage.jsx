@@ -6,6 +6,7 @@ import Quantity from "./Quantity";
 import Suggestion from "./Suggestion";
 import Loading from "./Loading";
 import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function ProductPage(){
     const { id } = useParams();
@@ -14,12 +15,17 @@ export default function ProductPage(){
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [id]);
+    
+
+    if(loading) return <div className="mt-40"><Loading /></div>
 
     return <>
-    { loading && <div className="mt-40"><Loading /></div> }
-    { error && <p>{error}</p> }
+    { error && <p className="mt-30 text-center">{error}</p> }
     { list && <div className="p-4 flex flex-col gap-16">
-        <section className="flex gap-4 max-[723px]:flex-col max-[723px]:items-center ">
+        <motion.section
+        initial={{ opacity : 0}} 
+        whileInView={{ opacity : 1 }}
+        className="flex gap-4 max-[723px]:flex-col max-[723px]:items-center ">
         <div className="min-w-[250px] max-w-[250px] flex flex-col gap-4 ">
             <img src={list.images} />
             <div className="w-full">
@@ -32,7 +38,7 @@ export default function ProductPage(){
             <p className="min-[723px]:w-[40ch] text-left">{list.description}</p>
             
         </div>
-    </section>
+    </motion.section>
     <hr className="border-gray-200" />
     <section className="flex  flex-wrap justify-center gap-8">
         <Suggestion id={list.category.id} />
