@@ -13,19 +13,21 @@ export function addToCart( cart,updateCart,id,product, quantity ){
             
             //only if it exists
             if(exists){
-                let newQuantity = exists.quantity + quantity;
+                let newQuantity = quantity;
                 if(newQuantity>=10) newQuantity=10;
-                const newItem = {
-                    quantity : newQuantity,
-                    id : id,
-                    product : product
-                }
+                if(newQuantity<=1) newQuantity=1;
 
-                const filteredCart = cart.filter((item)=>{
-                    return item.id!=id;
+                const updatedCart = cart.map((item)=>{
+                    if(item.id==id){
+                        return{
+                            ...item,
+                            quantity : newQuantity
+                        }
+                    }
+                    return item
                 })
 
-                updateCart([...filteredCart,newItem]);
+                updateCart([...updatedCart]);
                 
 
             }else{
@@ -37,3 +39,25 @@ export function addToCart( cart,updateCart,id,product, quantity ){
                 updateCart([...cart,newItem])
             }
     }
+
+
+export function deleteFromCart(cart,updateCart,id){
+    const updatedCart = cart.filter((item)=>{
+        return item.id!=id;
+    })
+    updateCart(updatedCart);
+}
+
+export const calTotal = (cart)=>{
+    return cart.reduce((total,item)=>{
+        return total+(item.quantity) * (item.product.price);
+    },0)
+}
+
+export const getQuantity = (cart,id)=>{
+    let exists = cart.find((item)=>{
+                return item.id==id;
+    })
+    if(exists) return exists.quantity;
+    return 1;
+}

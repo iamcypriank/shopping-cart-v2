@@ -1,6 +1,6 @@
 import { GanttChartSquare } from "lucide-react";
 import { useCart } from "../context/CartContext"
-import { addToCart } from "../utils/utils"
+import { addToCart, getQuantity } from "../utils/utils"
 import Button from "./Button"
 import { Link } from "react-router-dom"
 
@@ -19,7 +19,7 @@ export default function ProductCard({ product }){
                 </div>
                 <div className="self-end">
                     <Button onClick={()=>{
-                        addToCart(cart,updateCart,product.id,product,1)
+                        addToCart(cart,updateCart,product.id,product,getQuantity(cart,product.id)+1)
                     }}>Add to Cart</Button>
                 </div>
             </div>

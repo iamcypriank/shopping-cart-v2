@@ -1,11 +1,16 @@
 import { useState } from "react"
 import Button from "./Button"
 import { useCart } from "../context/CartContext";
-import { addToCart } from "../utils/utils";
-export default function Quantity({ id , product }){
-    const [ quantity, setQuantity ] = useState(1);
+import { addToCart, getQuantity } from "../utils/utils";
+import { Minus, Plus } from "lucide-react";
 
+
+export default function Quantity({ id , product }){
     const { cart , updateCart } = useCart();
+    
+    const [ quantity, setQuantity ] = useState(getQuantity(cart,id));
+
+    
     
     //increase quantity
     function increase(){
@@ -35,12 +40,12 @@ export default function Quantity({ id , product }){
             
             
             <Button 
-            onClick={decrease} size="sm">-</Button>
+            onClick={decrease} size="sm"><Minus size={16} /></Button>
 
             <p>{quantity}</p>
 
             <Button 
-            onClick={increase} size="sm">+</Button>
+            onClick={increase} size="sm"><Plus size={16} /></Button>
         </form>
         <Button onClick={()=>{
             addToCart(cart,updateCart,id,product,quantity);
