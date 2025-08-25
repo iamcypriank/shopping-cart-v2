@@ -3,12 +3,19 @@ import { useCart } from "../context/CartContext"
 import { addToCart, getQuantity } from "../utils/utils"
 import Button from "./Button"
 import { Link } from "react-router-dom"
+import { motion } from "framer-motion";
 
 export default function ProductCard({ product }){
     const { cart, updateCart } = useCart();
     
     return <>
-    { product && <article className="min-w-[250px] max-w-[250px]  flex flex-col gap-4 shadow-lg rounded-b-md">
+    { product && <motion.article
+    initial={{opacity : 0}}
+    whileHover={{scale : 1.1}}
+    whileInView={{opacity : 1}}
+    transition={{ opacity : { duration : 1},
+        scale : { duration : .2 }}}
+    className="min-w-[250px] max-w-[250px]  flex flex-col gap-4 shadow-lg rounded-b-md">
         <Link to={`/product/${product.id}`}><img className="h-[250px]" src={product.images} /></Link>
         <div className="flex gap-2 flex-col p-4">
              <Link to={`/product/${product.id}`}><h2 className="font-bold text-lg truncate overflow-hidden">{product.title}</h2></Link>
@@ -24,6 +31,6 @@ export default function ProductCard({ product }){
                 </div>
             </div>
         </div>
-    </article>}
+    </motion.article>}
     </>
 }
