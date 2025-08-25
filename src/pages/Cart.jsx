@@ -27,7 +27,7 @@ export default function Cart(){
             <div className="flex gap-2 w-full">
                 <input className="p-2 outline-accent-primary border-1 rounded-sm w-full border-black" type="text" placeholder="promo code" />
                 <Button>apply</Button></div>
-            <Button variant="secondary" custom="w-full">Checkout</Button>
+            <Button onClick={()=>{}} variant="secondary" custom="w-full">Checkout</Button>
         </section>
         </div>}
         </>
