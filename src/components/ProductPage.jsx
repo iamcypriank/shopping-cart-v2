@@ -4,13 +4,19 @@ import { BASE_URL } from "../utils/utils";
 import Button from "./Button";
 import Quantity from "./Quantity";
 import Suggestion from "./Suggestion";
+import Loading from "./Loading";
+import { useEffect } from "react";
 
 export default function ProductPage(){
     const { id } = useParams();
     const { list , error, loading } = useFetchProducts(`products/${id}`);
     
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [id]);
+
     return <>
-    { loading && <p>loading</p> }
+    { loading && <div className="mt-40"><p>{error}</p></div> }
     { error && <p>{error}</p> }
     { list && <div className="p-4 flex flex-col gap-16">
         <section className="flex gap-4 max-[723px]:flex-col max-[723px]:items-center ">

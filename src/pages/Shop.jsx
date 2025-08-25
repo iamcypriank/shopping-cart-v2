@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import ProductCard from "../components/ProductCard";
 import { useFetchProducts } from "../hooks/useFetchProducts"
 import { ListFilter } from "lucide-react";
+import Loading from "../components/Loading";
 
 export default function Shop(){
 
@@ -39,7 +40,7 @@ export default function Shop(){
     
     
     return <>
-    { loading && <p>loading</p>}
+    { loading && <div className="mt-40"><p>{error}</p></div>}
     { error && <p>{error}</p> }
     { list && list.length==0 && <p>no products found</p>}
     { list && 

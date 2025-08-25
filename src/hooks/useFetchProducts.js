@@ -13,6 +13,9 @@ export const useFetchProducts = ( searchPath)=>{
 
     useEffect(()=>{
 
+        setLoading(true);
+        setError(false);
+
         const controller = new AbortController();
         const signal = controller.signal;
 
