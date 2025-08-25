@@ -3,6 +3,7 @@ import { useFetchProducts } from "../hooks/useFetchProducts"
 import { BASE_URL } from "../utils/utils";
 import Button from "./Button";
 import Quantity from "./Quantity";
+import Suggestion from "./Suggestion";
 
 export default function ProductPage(){
     const { id } = useParams();
@@ -11,19 +12,25 @@ export default function ProductPage(){
     return <>
     { loading && <p>loading</p> }
     { error && <p>{error}</p> }
-    { list && <section className="p-4 flex gap-4 max-[723px]:flex-col ">
-        <div className="min-w-[250px] max-w-[250px] flex flex-col gap-2">
+    { list && <div className="p-4 flex flex-col gap-16">
+        <section className="flex gap-4 max-[723px]:flex-col max-[723px]:items-center ">
+        <div className="min-w-[250px] max-w-[250px] flex flex-col gap-2 ">
             <img src={list.images} />
             <div className="w-full">
                 <Quantity id={list.id} product={list} />
             </div>
         </div>
-        <div className="flex flex-col gap-2 float">
+        <div className="flex flex-col gap-2">
             <h1>{list.title}</h1>
-            <p className="min-[723px]:w-[40ch] text-left">{list.description}</p>
             <h2 className="text-3xl">${list.price}</h2>
+            <p className="min-[723px]:w-[40ch] text-left">{list.description}</p>
+            
         </div>
-
-    </section> }
+    </section>
+    <hr className="border-gray-200" />
+    <section className="flex  flex-wrap justify-center gap-8">
+        <Suggestion id={list.category.id} />
+    </section>
+    </div> }
     </>
 }
