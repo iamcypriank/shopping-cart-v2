@@ -13,6 +13,7 @@ export default function Navbar(){
                 </h1>
             </div></Link>
             <nav className="flex gap-4">
+                <Link to="/shop"><p className="font-bold">shop</p></Link>
                 <Link to='/cart'><ShoppingBag className="text-black dark:text-white" /></Link>
                 <UserCircle  className="text-black dark:text-white" />
             </nav>

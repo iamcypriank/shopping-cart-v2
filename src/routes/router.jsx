@@ -4,6 +4,7 @@ import Error from "../pages/Error"
 import Navbar from "../components/Navbar"
 import ProductPage from "../components/ProductPage"
 import Cart from "../pages/Cart"
+import Shop from "../pages/Shop"
 
 export const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
                 path : '/cart',
                 element : <Cart />
                 
+            },
+            {
+                path : '/shop',
+                element : <Shop />
             }
         ]
     }
