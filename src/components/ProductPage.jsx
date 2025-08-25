@@ -16,7 +16,7 @@ export default function ProductPage(){
     }, [id]);
 
     return <>
-    { loading && <div className="mt-40"><p>{error}</p></div> }
+    { loading && <div className="mt-40"><Loading /></div> }
     { error && <p>{error}</p> }
     { list && <div className="p-4 flex flex-col gap-16">
         <section className="flex gap-4 max-[723px]:flex-col max-[723px]:items-center ">

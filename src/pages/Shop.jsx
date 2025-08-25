@@ -40,7 +40,7 @@ export default function Shop(){
     
     
     return <>
-    { loading && <div className="mt-40"><p>{error}</p></div>}
+    { loading && <div className="mt-40"><Loading /></div>}
     { error && <p>{error}</p> }
     { list && list.length==0 && <p>no products found</p>}
     { list && 

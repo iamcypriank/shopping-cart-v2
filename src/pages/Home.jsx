@@ -9,7 +9,7 @@ export default function Home(){
     const { list , error , loading } = useFetchProducts('products?offset=12&limit=5');
     return <>
     { loading && <Loading />}
-    { error && <div className="mt-40"><p>{error}</p></div>  }
+    { error && <div className="mt-40"><Loading /></div>  }
     { list && <section className="p-4 flex flex-col gap-4">
         <article className="h-[200px] flex justify-center items-center bg-accent-primary">
             <Button onClick={()=>{
