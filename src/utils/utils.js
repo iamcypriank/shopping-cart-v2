@@ -61,3 +61,38 @@ export const getQuantity = (cart,id)=>{
     if(exists) return exists.quantity;
     return 1;
 }
+
+
+export const getUser = async(options)=>{
+
+    try{
+        const response = await fetch('https://api.escuelajs.co/api/v1/auth/profile',options);
+        if(!response.ok) {
+            console.log('ran');
+            return null;
+        }     
+        const user = await response.json();
+        return user;
+        }catch(err){
+            if(err.name!="AbortError"){
+                console.log(err.message);
+            }
+            return null;
+        }
+}
+
+
+export const login = async(options,setError)=>{
+    try{
+        const tokenRes = await fetch('https://api.escuelajs.co/api/v1/auth/login',options);
+        if(!tokenRes.ok) {
+            setError('wrong credentials');
+            return null ;
+        }
+        const token = await tokenRes.json();
+        return token;
+    }catch(err){
+        setError(err.message);
+        return null;
+    }
+}
