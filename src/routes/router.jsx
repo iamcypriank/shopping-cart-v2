@@ -5,6 +5,10 @@ import Navbar from "../components/Navbar"
 import ProductPage from "../components/ProductPage"
 import Cart from "../pages/Cart"
 import Shop from "../pages/Shop"
+import Login from  "../pages/Login"
+import Profile from "../pages/Profile"
+import ProtectedRoutes from "./ProtectedRoutes"
+import AuthContextProvider from "../context/AuthContextProvider"
 
 export const router = createBrowserRouter([
     {
@@ -28,6 +32,15 @@ export const router = createBrowserRouter([
             {
                 path : '/shop',
                 element : <Shop />
+            },
+            {
+                path : 'profile',
+                element : <ProtectedRoutes><Profile /></ProtectedRoutes>
+
+            },
+            {
+                path : '/login',
+                element : <Login />
             }
         ]
     }

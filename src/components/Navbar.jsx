@@ -1,4 +1,4 @@
-import { ShoppingBag, ShoppingCart, UserCircle } from "lucide-react";
+import { CircleUser, ShoppingBag, ShoppingCart, UserCircle } from "lucide-react";
 import { Outlet } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
@@ -20,6 +20,7 @@ export default function Navbar(){
                 {cart.length!=0 && <p 
                 className="absolute top-[-5px] right-[-5px] text-[10px] h-[16px] w-[16px] justify-center rounded-full flex items-center text-white dark:text-black bg-bg-secondary-dark dark:bg-bg-secondary-light">
                 {cart.length}</p>}</Link></div>
+                <Link to="/profile"><CircleUser  /></Link>
                
             </nav>
         </header>
