@@ -42,8 +42,8 @@ export default function Shop(){
     
     return <>
     { error && <p className="mt-30 text-center">{error}</p> }
-    { list && list.length==0 && <p>no products found</p>}
-    { list && 
+    { list && list.length==0 && <p className="mt-30 text-center" >API is currently not working</p>}
+    { list && list.length!=0 &&
         <section className="p-4 flex flex-col gap-4">
             <div className="flex justify-between">
                 
